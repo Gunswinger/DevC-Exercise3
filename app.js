@@ -1,34 +1,60 @@
+
+
 var request = new XMLHttpRequest();
 
 request.open("GET", "https://swapi.co/api/planets/", true);
-request.onload = function() {
+request.onload = function ()
+{
     var data = JSON.parse(this.response);
 
-    if (request.status >= 200 && request.status < 400) {
-        data.results.forEach(planet => {
-
+    if (request.status >= 200 && request.status < 400)
+    {
+        data.results.forEach(planet =>
+        {
             document.getElementById('get').addEventListener('click', myFunction)
+            function myFunction()
+            {
+                const tbody = document.getElementById('tbody')
+                const tr = document.createElement('tr')
+                const td0 = document.createElement('td')
+                const td1 = document.createElement('td')
+                const td2 = document.createElement('td')
+                const td3 = document.createElement('td')
+                const td4 = document.createElement('td')
+                const td5 = document.createElement('td')
+                const td6 = document.createElement('td')
+                const td7 = document.createElement('td')
+                const td8 = document.createElement('td')
 
+                td0.textContent = planet.name
+                td1.textContent = planet.rotation_period
+                td2.textContent = planet.orbital_period
+                td3.textContent = planet.diameter
+                td4.textContent = planet.climate
+                td5.textContent = planet.gravity
+                td6.textContent = planet.terrain
+                td7.textContent = planet.surface_water
+                td8.textContent = planet.population
 
-            function myFunction() {
-
-                document.getElementById("name").innerHTML = (planet.name);
-                document.getElementById("rotation_period").innerHTML = (planet.rotation_period);
-                document.getElementById("orbital_period").innerHTML = (planet.orbital_period);
-                document.getElementById("diameter").innerHTML = (planet.diameter);
-                document.getElementById("climate").innerHTML = (planet.climate);
-                document.getElementById("gravity").innerHTML = (planet.gravity);
-                document.getElementById("terrain").innerHTML = (planet.terrain);
-                document.getElementById("surface_water").innerHTML = (planet.surface_water);
-                document.getElementById("population").innerHTML = (planet.population);
+                tbody.appendChild(tr)
+                tr.appendChild(td0)
+                tr.appendChild(td1)
+                tr.appendChild(td2)
+                tr.appendChild(td3)
+                tr.appendChild(td4)
+                tr.appendChild(td5)
+                tr.appendChild(td6)
+                tr.appendChild(td7)
+                tr.appendChild(td8)
 
             }
 
 
         });
 
-    } else {
-        alert("Maaf browser anda tidak Support")
+    } else
+    {
+        alert("Request error sorry")
     }
 };
 
